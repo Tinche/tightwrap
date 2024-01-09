@@ -1,5 +1,13 @@
 # tightwrap
 
+[![PyPI](https://img.shields.io/pypi/v/tightwrap.svg)](https://pypi.python.org/pypi/tightwrap)
+[![Build](https://github.com/Tinche/tightwrap/workflows/CI/badge.svg)](https://github.com/Tinche/tightwrap/actions?workflow=CI)
+[![Coverage](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/Tinche/090e3ce4d18dd18bb1323538d6de8ffd/raw/covbadge.json)](https://github.com/Tinche/tightwrap/actions/workflows/main.yml)
+[![Supported Python versions](https://img.shields.io/pypi/pyversions/tightwrap.svg)](https://github.com/Tinche/tightwrap)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+
+___
+
 _tightwrap_ (pronounced _typed wrap_) is a drop-in replacement for [`functools.wraps`](https://docs.python.org/3/library/functools.html#functools.wraps) that works with static typing.
 _tightwrap_ is very small, so if you don't want to add a dependency to it just [vendor this file](https://github.com/Tinche/tightwrap/blob/main/src/tightwrap/__init__.py).
 
