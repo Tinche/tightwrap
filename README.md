@@ -1,10 +1,9 @@
 # tightwrap
 
 _tightwrap_ (pronounced _typed wrap_) is a replacement for [`functools.wraps`](https://docs.python.org/3/library/functools.html#functools.wraps) that works with static typing.
-_tightwrap_ is very small, so if you don't want to add a dependency to it, just [vendor the file](https://github.com/Tinche/tightwrap/).
+_tightwrap_ is very small, so if you don't want to add a dependency to it, just [vendor the file](https://github.com/Tinche/tightwrap/blob/main/src/tightwrap/__init__.py).
 
-`functools.wraps` is very commonly used to adapt runtime function signatures when wrapping functions,
-but it doesn't work well with static typing tools.
+`functools.wraps` is very commonly used to adapt runtime function signatures when wrapping functions, but it doesn't work well with static typing tools.
 For example, the current version of Mypy reports:
 
 ```python
