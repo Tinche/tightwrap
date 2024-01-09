@@ -43,4 +43,4 @@ wrapping("a string")  # error: Argument 1 to "wrapping" has incompatible type "s
 _tightwrap_ applies `functools.wraps` under the hood, so runtime inspection continues to work.
 
 If your wrapper has a different return type than the function you're wrapping,
-`tightwrap.wraps` will use the _wrapper_ return type, and fix the runtime return type.
+`tightwrap.wraps` will use the _wrapper_ return type and make the runtime signature return type match.

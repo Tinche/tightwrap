@@ -23,6 +23,7 @@ lint = [
     "mypy>=1.8.0",
     "ruff>=0.1.11",
 ]
-tests = [
+test = [
     "pytest>=7.4.4",
+    "coverage>=7.4.0",
 ]
