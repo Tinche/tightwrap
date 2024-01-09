@@ -30,3 +30,4 @@ test = [
 
 [tool.coverage.run]
 parallel = true
+source_pkgs = ["tightwrap"]
