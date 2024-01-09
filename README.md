@@ -51,6 +51,6 @@ wrapping("a string")  # No type error, blows up at runtime.
 
 ## Changelog
 
-### 24.1.0 (UNRELEASED)
+### 24.1.0 (2024-01-09)
 
 - Initial version.
