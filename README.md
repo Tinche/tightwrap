@@ -4,7 +4,7 @@ _tightwrap_ (pronounced _typed wrap_) is a drop-in replacement for [`functools.w
 _tightwrap_ is very small, so if you don't want to add a dependency to it just [vendor this file](https://github.com/Tinche/tightwrap/blob/main/src/tightwrap/__init__.py).
 
 `functools.wraps` is very commonly used to adapt runtime function signatures when wrapping functions, but it doesn't work well with static typing tools.
-`tightwrap.wraps` has the same interface, and you should use it instead:
+`tightwrap.wraps` has the same interface and you should use it instead:
 
 ```python
 from tightwrap import wraps
@@ -42,3 +42,9 @@ reveal_type(wrapping)  # Revealed type is "def (*args: Any, **kwargs: Any) -> bu
 
 wrapping("a string")  # No type error, blows up at runtime.
 ```
+
+## Changelog
+
+### 24.1.0 (UNRELEASED)
+
+- Initial version.
