@@ -1,0 +1,12 @@
+- case: argument_error
+  main: |
+    from tightwrap import wraps
+
+    def inner(a: int) -> int:
+      return a + 1
+
+    @wraps(inner)
+    def wrapped(*args, **kwargs) -> int:
+      return inner(*args, **kwargs)
+
+    wrapped("a string")  # E: Argument 1 to "wrapped" has incompatible type "str"; expected "int"  [arg-type]
