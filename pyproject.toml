@@ -1,6 +1,5 @@
 [project]
 name = "tightwrap"
-version = "24.1.0"
 description = "A typed `functools.wraps`."
 authors = [
     {name = "Tin Tvrtković", email = "tinchester@gmail.com"},
@@ -9,14 +8,17 @@ dependencies = []
 requires-python = ">=3.10"
 readme = "README.md"
 license = {text = "Apache2"}
+dynamic = ["version"]
+
 
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling", "hatch-vcs"]
 build-backend = "hatchling.build"
 
 
 [tool.pdm]
 package-type = "library"
+
 
 [tool.pdm.dev-dependencies]
 lint = [
@@ -29,6 +31,12 @@ test = [
     "pytest-mypy-plugins>=3.0.0",
 ]
 
+
 [tool.coverage.run]
 parallel = true
 source_pkgs = ["tightwrap"]
+
+
+[tool.hatch.version]
+source = "vcs"
+raw-options = { local_scheme = "no-local-version" }
