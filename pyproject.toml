@@ -27,3 +27,6 @@ test = [
     "pytest>=7.4.4",
     "coverage>=7.4.0",
 ]
+
+[tool.coverage.run]
+parallel = true
