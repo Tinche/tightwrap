@@ -18,41 +18,41 @@ def eval_if_necessary(source: Any, globals: Globals, locals: Locals) -> Any:
 
 def get_annotations(obj: Callable[..., Any]) -> Tuple[Annotations, Globals, Locals]:
     # Copied from https://github.com/python/cpython/blob/3.12/Lib/inspect.py#L176-L288
-	
+
     if isinstance(obj, type):
-        obj_dict = getattr(obj, '__dict__', None)
-        
-        if obj_dict and hasattr(obj_dict, 'get'):
-            ann = obj_dict.get('__annotations__', None)
+        obj_dict = getattr(obj, "__dict__", None)
+
+        if obj_dict and hasattr(obj_dict, "get"):
+            ann = obj_dict.get("__annotations__", None)
             if isinstance(ann, GetSetDescriptorType):
                 ann = None
         else:
             ann = None
 
         obj_globals = None
-        module_name = getattr(obj, '__module__', None)
-        
+        module_name = getattr(obj, "__module__", None)
+
         if module_name:
             module = sys.modules.get(module_name, None)
-            
+
             if module:
-                obj_globals = getattr(module, '__dict__', None)
-        
+                obj_globals = getattr(module, "__dict__", None)
+
         obj_locals = dict(vars(obj))
         unwrap = obj
-    
+
     elif isinstance(obj, ModuleType):
-        ann = getattr(obj, '__annotations__', None)
-        obj_globals = getattr(obj, '__dict__')
+        ann = getattr(obj, "__annotations__", None)
+        obj_globals = getattr(obj, "__dict__")
         obj_locals = None
         unwrap = None
-    
+
     elif callable(obj):
-        ann = getattr(obj, '__annotations__', None)
-        obj_globals = getattr(obj, '__globals__', None)
+        ann = getattr(obj, "__annotations__", None)
+        obj_globals = getattr(obj, "__globals__", None)
         obj_locals = None
         unwrap = obj
-    
+
     else:
         raise TypeError(f"{obj!r} is not a module, class, or callable.")
 
@@ -67,7 +67,7 @@ def get_annotations(obj: Callable[..., Any]) -> Tuple[Annotations, Globals, Loca
 
     if unwrap is not None:
         while True:
-            if hasattr(unwrap, '__wrapped__'):
+            if hasattr(unwrap, "__wrapped__"):
                 unwrap = unwrap.__wrapped__
                 continue
             if isinstance(unwrap, functools.partial):
@@ -81,5 +81,5 @@ def get_annotations(obj: Callable[..., Any]) -> Tuple[Annotations, Globals, Loca
         key: eval_if_necessary(value, obj_globals, obj_locals)
         for key, value in ann.items()
     }
-    
+
     return return_value, obj_globals, obj_locals
