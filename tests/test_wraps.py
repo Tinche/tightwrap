@@ -29,7 +29,7 @@ def test_wraps_different_return() -> None:
     @wraps(wrapped)
     def wrapper(*args: Any, **kwargs: Any) -> str:
         return str(wrapped(*args, **kwargs))
-    
+
     wrapped_signature = _get_resolved_signature(wrapped)
     wrapper_signature = _get_resolved_signature(wrapper)
 
