@@ -1,9 +1,9 @@
 from __future__ import annotations
 
-from inspect import signature
 from typing import Any, Callable
 
 from tightwrap import wraps
+from tightwrap import _get_resolved_signature  # type: ignore
 
 
 def test_wraps() -> None:
@@ -17,7 +17,7 @@ def test_wraps() -> None:
         return wrapped(a)
 
     assert wrapper(3) == 4
-    assert signature(wrapped) == signature(wrapper)
+    assert _get_resolved_signature(wrapped) == _get_resolved_signature(wrapper)
 
     _: Callable[[int], int] = wrapper
 
@@ -29,10 +29,13 @@ def test_wraps_different_return() -> None:
     @wraps(wrapped)
     def wrapper(*args: Any, **kwargs: Any) -> str:
         return str(wrapped(*args, **kwargs))
+    
+    wrapped_signature = _get_resolved_signature(wrapped)
+    wrapper_signature = _get_resolved_signature(wrapper)
 
     assert wrapper(3) == "4"
-    assert signature(wrapped, eval_str=True).parameters == signature(wrapper).parameters
-    assert signature(wrapper).return_annotation is str
-    assert signature(wrapped, eval_str=True).return_annotation is int
+    assert wrapped_signature.parameters == wrapper_signature.parameters
+    assert wrapper_signature.return_annotation is str
+    assert wrapped_signature.return_annotation is int
 
     _: Callable[[int], str] = wrapper
