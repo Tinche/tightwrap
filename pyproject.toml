@@ -32,6 +32,7 @@ build-backend = "hatchling.build"
 [tool.coverage.run]
 parallel = true
 source_pkgs = ["tightwrap"]
+omit = ["_backported.py"]
 
 
 [tool.hatch.version]
