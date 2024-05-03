@@ -1,12 +1,13 @@
-# type: ignore
-
+import functools
 import sys
 from types import GetSetDescriptorType, ModuleType
-from typing import Callable, Any, Mapping, Tuple
-import functools
+from typing import Any, Callable, Dict, Tuple, cast
 
 
-Annotations = Globals = Locals = Mapping[str, Any]
+Annotations = Dict[str, Any]
+Globals = Dict[str, Any]
+Locals = Dict[str, Any]
+GetAnnotationsResults = Tuple[Annotations, Globals, Locals]
 
 
 def eval_if_necessary(source: Any, globals: Globals, locals: Locals) -> Any:
@@ -16,8 +17,12 @@ def eval_if_necessary(source: Any, globals: Globals, locals: Locals) -> Any:
     return eval(source, globals, locals)
 
 
-def get_annotations(obj: Callable[..., Any]) -> Tuple[Annotations, Globals, Locals]:
+def get_annotations(obj: Callable[..., Any]) -> GetAnnotationsResults:
     # Copied from https://github.com/python/cpython/blob/3.12/Lib/inspect.py#L176-L288
+
+    obj_globals: Any
+    obj_locals: Any
+    unwrap: Any
 
     if isinstance(obj, type):
         obj_dict = getattr(obj, "__dict__", None)
@@ -57,13 +62,13 @@ def get_annotations(obj: Callable[..., Any]) -> Tuple[Annotations, Globals, Loca
         raise TypeError(f"{obj!r} is not a module, class, or callable.")
 
     if ann is None:
-        return {}
+        return cast(GetAnnotationsResults, ({}, obj_globals, obj_locals))
 
     if not isinstance(ann, dict):
         raise ValueError(f"{obj!r}.__annotations__ is neither a dict nor None")
 
     if not ann:
-        return {}
+        return cast(GetAnnotationsResults, ({}, obj_globals, obj_locals))
 
     if unwrap is not None:
         while True:
@@ -79,7 +84,7 @@ def get_annotations(obj: Callable[..., Any]) -> Tuple[Annotations, Globals, Loca
 
     return_value = {
         key: eval_if_necessary(value, obj_globals, obj_locals)
-        for key, value in ann.items()
+        for key, value in cast(Dict[str, Any], ann).items()
     }
 
-    return return_value, obj_globals, obj_locals
+    return cast(GetAnnotationsResults, (return_value, obj_globals, obj_locals))
