@@ -1,10 +1,9 @@
 import sys
-
 from functools import wraps as functools_wraps
 from inspect import Signature
 from typing import Any, Callable, TypeVar, cast
 
-from ._backported import get_annotations, eval_if_necessary
+from ._backported import eval_if_necessary, get_annotations
 
 if sys.version_info >= (3, 10):
     from typing import ParamSpec

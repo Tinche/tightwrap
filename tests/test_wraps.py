@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from typing import Any, Callable
 
+from tightwrap import _get_resolved_signature  # pyright: ignore[reportPrivateUsage]
 from tightwrap import wraps
-from tightwrap import _get_resolved_signature  # type: ignore
 
 
 def test_wraps() -> None:
