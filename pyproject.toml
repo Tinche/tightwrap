@@ -54,5 +54,3 @@ test = [
     "coverage>=7.4.0",
     "pytest-mypy-plugins>=3.0.0",
 ]
-
-
