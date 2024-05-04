@@ -51,6 +51,10 @@ wrapping("a string")  # No type error, blows up at runtime.
 
 ## Changelog
 
+### 24.2.0 (UNRELEASED)
+
+- Add support for Python 3.8 and 3.9.
+
 ### 24.1.0 (2024-01-09)
 
 - Initial version.
