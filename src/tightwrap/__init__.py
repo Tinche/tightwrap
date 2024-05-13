@@ -1,6 +1,6 @@
 import sys
 from functools import wraps as functools_wraps
-from inspect import Signature
+from inspect import Signature, _empty
 from typing import Any, Callable, TypeVar, cast
 
 from ._backported import eval_if_necessary, get_annotations
@@ -20,12 +20,12 @@ def _get_resolved_signature(fn: Callable[..., Any]) -> Signature:
     evaluated_annotations, fn_globals, fn_locals = get_annotations(fn)
 
     for name, parameter in signature.parameters.items():
-        setattr(parameter, "_annotation", evaluated_annotations[name])
+        parameter._annotation = evaluated_annotations.get(name, _empty)  # type: ignore
 
     new_return_annotation = eval_if_necessary(
         signature.return_annotation, fn_globals, fn_locals
     )
-    setattr(signature, "_return_annotation", new_return_annotation)
+    signature._return_annotation = new_return_annotation  # type: ignore
 
     return signature
 
@@ -42,8 +42,8 @@ def wraps(wrapped: Callable[P, Any]) -> Callable[[Callable[..., R]], Callable[P,
         if orig_sig.return_annotation != wrapper_return:
             # We do a little rewriting.
             new_sig = Signature(None, return_annotation=wrapper_return)
-            setattr(new_sig, "_parameters", orig_sig.parameters)
-            setattr(res, "__signature__", new_sig)
+            new_sig._parameters = orig_sig.parameters  # type: ignore
+            res.__signature__ = new_sig  # type: ignore
 
         return cast(Callable[P, R], res)
 

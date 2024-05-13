@@ -2,8 +2,10 @@ from __future__ import annotations
 
 from typing import Any, Callable
 
-from tightwrap import _get_resolved_signature  # pyright: ignore[reportPrivateUsage]
-from tightwrap import wraps
+from tightwrap import (
+    _get_resolved_signature,  # pyright: ignore[reportPrivateUsage]
+    wraps,
+)
 
 
 def test_wraps() -> None:
@@ -39,3 +41,16 @@ def test_wraps_different_return() -> None:
     assert wrapped_signature.return_annotation is int
 
     _: Callable[[int], str] = wrapper
+
+
+def test_wrap_unannotated() -> None:
+    """Unannotated functions can be wrapped."""
+
+    def inner(a):
+        return a + 1
+
+    @wraps(inner)
+    def outer(*args: Any, **kwargs: Any) -> int:
+        return inner(*args, **kwargs)
+
+    assert outer(3) == 4
