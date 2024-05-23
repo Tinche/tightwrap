@@ -51,7 +51,7 @@ wrapping("a string")  # No type error, blows up at runtime.
 
 ## Changelog
 
-### 24.3.0 (UNRELEASED)
+### 24.3.0 (2024-05-24)
 
 - Fix wrapping unannotated functions.
   ([#2](https://github.com/Tinche/tightwrap/issues/2) [#3](https://github.com/Tinche/tightwrap/pull/3))
