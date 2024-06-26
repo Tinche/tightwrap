@@ -51,6 +51,11 @@ wrapping("a string")  # No type error, blows up at runtime.
 
 ## Changelog
 
+### 24.4.0 (UNRELEASED)
+
+- Add support for Python 3.13.
+  ([#4](https://github.com/Tinche/tightwrap/pull/4))
+
 ### 24.3.0 (2024-05-24)
 
 - Fix wrapping unannotated functions.
