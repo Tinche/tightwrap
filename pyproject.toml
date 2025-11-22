@@ -41,11 +41,7 @@ source = "vcs"
 raw-options = { local_scheme = "no-local-version" }
 
 
-[tool.pdm]
-distribution = true
-
-
-[tool.pdm.dev-dependencies]
+[dependency-groups]
 lint = [
     "mypy>=1.8.0",
     "ruff>=0.1.11",
