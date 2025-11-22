@@ -53,8 +53,12 @@ wrapping("a string")  # No type error, blows up at runtime.
 
 ### 24.4.0 (UNRELEASED)
 
+- Add support for Python 3.14.
+  ([#8](https://github.com/Tinche/tightwrap/pull/8))
 - Add support for Python 3.13.
   ([#4](https://github.com/Tinche/tightwrap/pull/4))
+- Drop support for Python 3.8 and 3.9.
+  ([#8](https://github.com/Tinche/tightwrap/pull/8))
 
 ### 24.3.0 (2024-05-24)
 
