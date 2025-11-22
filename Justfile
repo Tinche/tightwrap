@@ -1,13 +1,16 @@
 mypy:
-    pdm run mypy src/ tests
+    uv run mypy src/ tests
 
 ruff:
-    pdm run ruff src/ tests
+    uv run ruff check src/ tests
 
 fmt:
-    pdm run ruff format --check src/ tests
+    uv run ruff format --check src/ tests
 
 lint: mypy ruff fmt
 
 test *args="":
-    pdm run pytest {{args}}
+    uv run pytest {{args}}
+
+sync:
+    uv sync --all-groups
