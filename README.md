@@ -3,7 +3,7 @@
 [![PyPI](https://img.shields.io/pypi/v/tightwrap.svg)](https://pypi.python.org/pypi/tightwrap)
 [![Build](https://github.com/Tinche/tightwrap/workflows/CI/badge.svg)](https://github.com/Tinche/tightwrap/actions?workflow=CI)
 [![Coverage](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/Tinche/090e3ce4d18dd18bb1323538d6de8ffd/raw/covbadge.json)](https://github.com/Tinche/tightwrap/actions/workflows/main.yml)
-[![Supported Python Versions](https://img.shields.io/python/required-version-toml?tomlFilePath=https%3A%2F%2Fraw.githubusercontent.com%2FTinche%2Ftightwrap%2Fmain%2Fpyproject.toml)](https://github.com/Tinche/tightwrap/blob/main/pyproject.toml)
+[![Supported Python Versions](https://img.shields.io/pypi/pyversions/tightwrap.svg)](https://github.com/Tinche/tightwrap)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 
 _tightwrap_ (pronounced _typed wrap_) is a drop-in replacement for [`functools.wraps`](https://docs.python.org/3/library/functools.html#functools.wraps) that works with static typing.
@@ -53,8 +53,12 @@ wrapping("a string")  # No type error, blows up at runtime.
 
 ### 24.4.0 (UNRELEASED)
 
+- Add support for Python 3.14.
+  ([#8](https://github.com/Tinche/tightwrap/pull/8))
 - Add support for Python 3.13.
   ([#4](https://github.com/Tinche/tightwrap/pull/4))
+- Drop support for Python 3.8 and 3.9.
+  ([#8](https://github.com/Tinche/tightwrap/pull/8))
 
 ### 24.3.0 (2024-05-24)
 
