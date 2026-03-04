@@ -51,8 +51,10 @@ wrapping("a string")  # No type error, blows up at runtime.
 
 ## Changelog
 
-### 24.4.0 (UNRELEASED)
+### NEXT (UNRELEASED)
 
+- Add support for wrapping methods with correct typing.
+  ([#9](https://github.com/Tinche/tightwrap/pull/9))
 - Add support for Python 3.14.
   ([#8](https://github.com/Tinche/tightwrap/pull/8))
 - Add support for Python 3.13.
