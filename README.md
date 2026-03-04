@@ -51,7 +51,7 @@ wrapping("a string")  # No type error, blows up at runtime.
 
 ## Changelog
 
-### NEXT (UNRELEASED)
+### 26.1.0 (2026-03-04)
 
 - Add support for wrapping methods with correct typing.
   ([#9](https://github.com/Tinche/tightwrap/pull/9))
