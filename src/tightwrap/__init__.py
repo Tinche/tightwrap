@@ -1,14 +1,10 @@
-import sys
 from functools import wraps as functools_wraps
 from inspect import Signature, _empty
 from typing import TYPE_CHECKING, Any, Callable, TypeVar
 
 from ._backported import eval_if_necessary, get_annotations
 
-if sys.version_info >= (3, 10):
-    from typing import ParamSpec
-else:
-    from typing_extensions import ParamSpec
+from typing import ParamSpec
 
 P = ParamSpec("P")
 T = TypeVar("T")
