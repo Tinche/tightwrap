@@ -51,6 +51,10 @@ wrapping("a string")  # No type error, blows up at runtime.
 
 ## Changelog
 
+### NEXT (UNRELEASED)
+
+- Replace `pytest-mypy-plugins` YAML typing tests with Markdown `pytest-typing` tests running on Mypy and ty.
+
 ### 26.1.0 (2026-03-04)
 
 - Add support for wrapping methods with correct typing.
